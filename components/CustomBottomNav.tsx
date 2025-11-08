@@ -30,17 +30,33 @@ export const CustomBottomNav: React.FC<CustomBottomNavProps> = ({
     activeIconColor = '#333'
 }) => {
     return (
-        <View>
+        <View
+            style={[
+                styles.bottomNav, {backgroundColor}
+            ]}
+        >
             {
                 items.map((item, index) => {
                     const isActive = activeTab === item.id;
 
                     return (
                         <TouchableOpacity
-                            key={}
+                            key={item.id}
+                            style={styles.navItem}
+                            onPress={() => onTabPress(item.id)}
+                            activeOpacity={0.7}
                         >
-                            <Animated.View>
-                                <Ionicons />
+                            <Animated.View
+                                style={[
+                                    styles.iconContainer,
+                                    isActive && { backgroundColor: activeBackgroundColor},
+                                ]}
+                            >
+                                <Ionicons
+                                    name={isActive ? item.acitveIcon as any: item.icon as any}
+                                    size={24}
+                                    color={isActive ? activeIconColor : iconColor} 
+                                />
                             </Animated.View>
                         </TouchableOpacity>
                     )
