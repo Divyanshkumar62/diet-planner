@@ -19,7 +19,7 @@ export default function TabLayout() {
   const renderScreen = () => {
     switch (activeTab) {
       case 'home':
-        return <View>Home</View>;
+        return <HomeScreen />;
       case 'meals':
         return <View>Meals</View>;
       case 'profile':
@@ -41,6 +41,9 @@ export default function TabLayout() {
     </View>
   )
 }
+
+// Importing the screen components
+import HomeScreen from './index'
 
 
 const styles = StyleSheet.create({
